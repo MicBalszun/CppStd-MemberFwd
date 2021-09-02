@@ -2,7 +2,7 @@
 
 In short, the goal is to allow forward declarations of c++ member functions without having to give the whole class definition (in particular without the member variables).
 
-This would alow code similar to the following(The `__FWD__` "keyword is just pseudo syntax at this point):
+This would alow code similar to the following(The `__FWD__` "keyword" is just pseudo syntax at this point):
 
 ```C
 // Foo.h
@@ -39,7 +39,7 @@ The main advantage being that the private member functions become a true impleme
 
 # Motivation
 
-Generally, forward declaration is about physically separating the interface from implementation. While c++ allows forward declare member functions, that forward declaration is tied to the class definition, which has to contain all member variables. While a developer can prevent access to those member variables via public/private access specifiers, their definition still needs to be visible to the compiler in any translation unit that wants to access a type's member function. This not only means that the compiler might have to repeatedly instantiate types that 
+<!-- Generally, forward declaration is about physically separating the interface from implementation. While c++ allows forward declaration of member functions, that forward declaration is tied to the class definition, which has to contain all member variables. While a developer can prevent access to those member variables via public/private access specifiers, their definition still needs to be visible to the compiler in any translation unit that wants to access a type's member function. This not only means that the compiler might have to repeatedly instantiate types that -->
 
 C++ already allows (probably even encourages) to separate the declaration of member functions from their definition. However, their declaration is part of the class definition, which also includes all member variables (including private ones). Consequently the compiler has to have processed their type definitions (as well as any default member initializer expressions), even in cases where those members are completely irrelevant for the code generation on the user side.
 
